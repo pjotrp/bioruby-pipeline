@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/pjotrp/bioruby-pipeline.png)](http://travis-ci.org/pjotrp/bioruby-pipeline)
 
-Full description goes here
+Common pipeline tasks.
 
 Note: this software is under active development!
 
