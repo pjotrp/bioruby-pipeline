@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "bio-pipeline"
   gem.homepage = "http://github.com/pjotrp/bioruby-pipeline"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Common Ruby pipeline functions for bioinformatics}
+  gem.description = %Q{Fetch URIs, checksums, job management}
   gem.email = "pjotr.public01@thebird.nl"
   gem.authors = ["Pjotr Prins"]
   # dependencies defined in Gemfile
