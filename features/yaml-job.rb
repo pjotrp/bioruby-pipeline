@@ -12,7 +12,7 @@ Then /^it sets the input to$/ do |string|
   @yamljob = BioPipeline::YamlJob.new(@template)
   yaml = @yamljob.parse_erb
   yaml.should == string
-  job = @yamljob.parse_yaml(yaml)
+  job = YAML::load(yaml)
   job.should == {:commands=>["cat LICENSE.txt > output/aa.fa"]}
 end
 
