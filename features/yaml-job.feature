@@ -4,7 +4,7 @@ Feature: Run a job or task described with YAML and ERB
   as a template preparsed by erb. An example would be
 
     :inputs:
-      :seq_file: aa.fa
+      :seq_file: <%= in_file = 'aa.fa' %>
     :commands:
       - <%= muscle_bin %> -i <%= seq_file %> -o <%= outputdir %>/aa-align.fa
     :outputs:
@@ -13,16 +13,16 @@ Feature: Run a job or task described with YAML and ERB
   Scenario: Execute a simple job in the shell
     Given an example YAML job command
     """
-# <%= in_file='LICENSE.txt' %>
+:seq_file: <%= in_file='test/data/nt.fa' %>
 :commands:
-  - "cat <%= in_file %> > <%= output_dir %>/aa.fa"
+  - "cat <%= in_file %> > <%= output_dir %>/nt.fa"
     """
     When I execute the YAML job
     Then it sets the input to
     """
-# LICENSE.txt
+:seq_file: test/data/nt.fa
 :commands:
-  - "cat LICENSE.txt > output/aa.fa"
+  - "cat test/data/nt.fa > output/nt.fa"
     """
     And it creates the output dir
     And it prints the file to the output dir

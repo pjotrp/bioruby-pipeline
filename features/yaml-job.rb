@@ -13,7 +13,8 @@ Then /^it sets the input to$/ do |string|
   yaml = @yamljob.parse_erb(nil,:output_dir => 'output')
   yaml.should == string
   job = YAML::load(yaml)
-  job.should == {:commands=>["cat LICENSE.txt > output/aa.fa"]}
+  job.should == 
+    {:seq_file=>"test/data/nt.fa", :commands=>["cat test/data/nt.fa > output/nt.fa"]}
 end
 
 Then /^it creates the output dir$/ do
