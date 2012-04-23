@@ -12,11 +12,12 @@ module BioPipeline
       @template = template
     end
 
-    def run
-      Dir::mkdir('output') if not File.directory?('output')
-      y = YAML.load(parse_erb)
+    def run opts
+      output_dir = opts[:output_dir] || 'tmp'
+      Dir::mkdir(output_dir) if not File.directory?(output_dir)
+      y = YAML.load(parse_erb(@template,opts))
       y[:commands].each do | cmd |
-        p cmd
+        print "Executing: ",cmd,"\n"
         Kernel::system(cmd)
       end
     end

@@ -13,12 +13,14 @@ Feature: Run a job or task described with YAML and ERB
   Scenario: Execute a simple job in the shell
     Given an example YAML job command
     """
+# <%= in_file='LICENSE.txt' %>
 :commands:
   - "cat <%= in_file %> > <%= output_dir %>/aa.fa"
     """
     When I execute the YAML job
     Then it sets the input to
     """
+# LICENSE.txt
 :commands:
   - "cat LICENSE.txt > output/aa.fa"
     """
