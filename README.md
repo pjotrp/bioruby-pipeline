@@ -2,11 +2,20 @@
 
 [![Build Status](https://secure.travis-ci.org/pjotrp/bioruby-pipeline.png)](http://travis-ci.org/pjotrp/bioruby-pipeline)
 
-Common pipeline tasks.
+Common pipeline tasks. This Bio module does not do the work of a job
+scheduler, for this you can use [Ruby Queue
+(rq)](https://github.com/pjotrp/rq), amongst many.  bio-pipeline
+addresses DRY principles for creating tasks at the job level. For
+example, bio-pipeline comes with a library templates (mostly based on
+YAML and ERB) for common bioinformatics tasks. Also bio-pipeline has
+the run-once command, which caches results and won't calculate the
+same result twice.
 
-Note: this software is under active development!
+Note: this software is under active development! Feel free to pitch in.
 
 ## Installation
+
+(sorry, not yet!)
 
 ```sh
     gem install bio-pipeline
@@ -18,7 +27,7 @@ Note: this software is under active development!
     require 'bio-pipeline'
 ```
 
-The API doc is online. For more code examples see the test files in
+The API doc is online. For more code examples see the test and feature files in
 the source tree.
         
 ## Project home page
