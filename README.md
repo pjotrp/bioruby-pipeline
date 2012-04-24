@@ -24,11 +24,25 @@ erb. An example for running an alignment program would be
     :commands:
       - <%= muscle_bin %> -i <%= in_file %> -o <%= output_dir %>/aa-align.fa
     :outputs:
-      - <%= output_dir %>/*
+      - <%= output_dir %>             # defaults to ./output
 ```
 
 Note that in_file gets defined in the YAML file, while muscle_bin and output_dir 
-are defined by the calling context.
+are defined by the calling context. Run this command from the command line with
+
+```bash
+  ./bin/runner -c muscle.yaml
+```
+
+The idea is to have richer meta-data possibilities, and rather than
+using commands on the command line we can easily share common tasks,
+add context, paths, and features like creating and copying the output_dir. 
+
+To set/override parameters, they can be added on the command line
+
+```bash
+  ./bin/runner -c muscle.yaml -output_dir tmp -muscle_bin /opt/muscle/bin/muscle
+```
 
 Note: this software is under active development! Feel free to pitch in.
 
