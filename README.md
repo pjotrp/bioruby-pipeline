@@ -12,6 +12,24 @@ templates, mostly based on YAML and ERB, for common bioinformatics
 tasks. Also bio-pipeline has the run-once command, which caches
 results and won't calculate the same result twice.
 
+## YAML/erb templates
+
+In order to describe a job that can be run in a pipeline, we introduce
+a data structure in YAML, which acts also as a template preparsed by
+erb. An example for running an alignment program would be
+
+```yaml
+    :inputs:
+      - <%= in_file = 'aa.fa' %>      # here we set in_file too!
+    :commands:
+      - <%= muscle_bin %> -i <%= in_file %> -o <%= output_dir %>/aa-align.fa
+    :outputs:
+      - <%= output_dir %>/*
+```
+
+Note that in_file gets defined in the YAML file, while muscle_bin and output_dir 
+are defined by the calling context.
+
 Note: this software is under active development! Feel free to pitch in.
 
 ## Installation
