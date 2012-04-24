@@ -12,6 +12,10 @@ templates, mostly based on YAML and ERB, for common bioinformatics
 tasks. Also bio-pipeline has the run-once command, which caches
 results and won't calculate the same result twice.
 
+You do not need to know Ruby to use bio-pipeline.
+
+Note: this software is under active development! Feel free to pitch in.
+
 ## YAML/erb templates
 
 In order to describe a job that can be run in a pipeline, we introduce
@@ -19,6 +23,7 @@ a data structure in YAML, which acts also as a template preparsed by
 erb. An example for running an alignment program would be
 
 ```yaml
+    # muscle.yaml
     :inputs:
       - <%= in_file = 'aa.fa' %>      # here we set in_file too!
     :commands:
@@ -44,7 +49,9 @@ To set/override parameters, they can be added on the command line
   ./bin/runner -c muscle.yaml -output_dir tmp -muscle_bin /opt/muscle/bin/muscle
 ```
 
-Note: this software is under active development! Feel free to pitch in.
+## run-once
+
+(coming soon) 
 
 ## Installation
 
