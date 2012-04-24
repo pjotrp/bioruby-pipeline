@@ -16,7 +16,7 @@ Note: this software is under active development! Feel free to pitch in.
 
 ## Installation
 
-(sorry, not yet!)
+(sorry, not ready yet!)
 
 ```sh
     gem install bio-pipeline

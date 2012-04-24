@@ -1,14 +1,18 @@
 Feature: Run a job or task described with YAML and ERB
   In order to describe a job that can be run in a pipeline,
   we introduce a data structure in YAML, which acts also
-  as a template preparsed by erb. An example would be
+  as a template preparsed by erb. An example for running an alignment
+  program would be
 
     :inputs:
-      :seq_file: <%= in_file = 'aa.fa' %>
+      - <%= in_file = 'aa.fa' %>      # here we set in_file too!
     :commands:
-      - <%= muscle_bin %> -i <%= seq_file %> -o <%= outputdir %>/aa-align.fa
+      - <%= muscle_bin %> -i <%= in_file %> -o <%= output_dir %>/aa-align.fa
     :outputs:
-      - <%= outputdir %>/*
+      - <%= output_dir %>/*
+
+  Note that in_file gets defined in the YAML file, while muscle_bin and output_dir 
+  are defined by the calling context.
 
   Scenario: Execute a simple job in the shell
     Given an example YAML job command
