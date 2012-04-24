@@ -14,7 +14,7 @@ Then /^it sets the input to$/ do |string|
   yaml.should == string
   job = YAML::load(yaml)
   job.should == 
-    {:seq_file=>"test/data/nt.fa", :commands=>["cat test/data/nt.fa > output/nt.fa"]}
+    {:inputs=>["test/data/nt.fa"], :commands=>["cat test/data/nt.fa > output/nt.fa"]}
 end
 
 Then /^it creates the output dir$/ do
