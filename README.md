@@ -16,14 +16,14 @@ You do not need to know Ruby to use bio-pipeline.
 
 Note: this software is under active development! Feel free to pitch in.
 
-## YAML/erb templates
+## task files as YAML/erb templates
 
 In order to describe a job that can be run in a pipeline, we introduce
-a data structure in YAML, which acts also as a template preparsed by
+a data structure in YAML, a task file, which acts also as a template preparsed by
 erb. An example for running an alignment program would be
 
-```yaml
-    # muscle.yaml
+```ruby
+    # task file: muscle.yaml
     :inputs:
       - <%= in_file = 'aa.fa' %>      # here we set in_file too!
     :commands:
@@ -32,8 +32,9 @@ erb. An example for running an alignment program would be
       - <%= output_dir %>             # defaults to ./output
 ```
 
-Note that in_file gets defined in the YAML file, while muscle_bin and output_dir 
-are defined by the calling context. Run this command from the command line with
+Note that *in_file* gets defined in the YAML task file, while
+*muscle_bin* and *output_dir* are defined by the calling context. Run
+this command from the command line with
 
 ```bash
   ./bin/runner -c muscle.yaml
@@ -41,17 +42,44 @@ are defined by the calling context. Run this command from the command line with
 
 The idea is to have richer meta-data possibilities, and rather than
 using commands on the command line we can easily share common tasks,
-add context, paths, and features like creating and copying the output_dir. 
+add context, paths, and features like creating and copying the *output_dir*. 
 
-To set/override parameters, they can be added on the command line
+To set/override parameters outside the template, they can also be added on
+the command line as switches:
 
 ```bash
   ./bin/runner -c muscle.yaml -output_dir tmp -muscle_bin /opt/muscle/bin/muscle
 ```
 
+the runner handles that by copying the switches into the name space - some nice
+Ruby magic.
+
+erb executes the Ruby between <% and %> on compiling the template.
+After this, at runtime, you can run Ruby programs as scripts, but you
+can also call into the bio-pipeline engine and libraries. A command is
+always checked if it exists as a method in the engine's namespace
+first. So if a command exists as a method the rest of the command is
+executed as Ruby in the local interpreter. For example
+
+```ruby
+    :commands:
+      - BioPipeline::report(<%= in_file %>,<%= output_dir %>/aa-align.fa)
+```
+
+Within the task file commands section, commands are simply executed in
+sequence.
+
+## Chaining task files
+
+(coming soon)
+
 ## run-once
 
 (coming soon) 
+
+## map reduce and dependencies
+
+(coming soon)
 
 ## Installation
 
