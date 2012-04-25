@@ -51,7 +51,7 @@ the command line as switches:
   ./bin/runner -c muscle.yaml -output_dir tmp -muscle_bin /opt/muscle/bin/muscle
 ```
 
-the runner handles that by copying the switches into the name space - some nice
+the runner handles that by copying the switches into the name space - using some nice
 Ruby magic.
 
 erb executes the Ruby between <% and %> on compiling the template.
@@ -71,7 +71,13 @@ sequence.
 
 ## Chaining task files
 
-(coming soon)
+Chaining tasks allows modularising work in task files - so each task file 
+represents as few steps as possible. To chain we want 
+
+1. to call the next task file
+2. to pass in new inputs (including output of the current task)
+
+(more soon)
 
 ## run-once
 
