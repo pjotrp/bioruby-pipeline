@@ -6,11 +6,14 @@ Common pipeline tasks. This Bio module does not do the work of a job
 scheduler, for this you can choose to use our simple [Ruby Queue
 (rq)](https://github.com/pjotrp/rq) from many other schedulers.
 
-bio-pipeline, meanwhile, addresses DRY principles for creating tasks
-at the job level. For example, bio-pipeline comes with a library of
-templates, mostly based on YAML and ERB, for common bioinformatics
-tasks. Also bio-pipeline has the run-once command, which caches
-results and won't calculate the same result twice.
+bio-pipeline, meanwhile, addresses do-not-repeat-yoursefl (DRY)
+principles for creating tasks at the job level, and aims for
+convention-over-configuration (CoC). For example, bio-pipeline comes
+with a library of templates, mostly based on YAML and ERB, for common
+bioinformatics tasks. 
+
+Also bio-pipeline has the run-once command, which caches results and
+won't calculate the same result twice.
 
 You do not need to know Ruby to use bio-pipeline.
 
@@ -86,6 +89,14 @@ represents as few steps as possible. To chain we want
 ## map reduce and dependencies
 
 (coming soon)
+
+## more documentation
+
+Features describe the behaviour of bio-pipeline. More documentation
+can also be found
+
+* [Settings, variables and environment](http://github.com/pjotrp/bioruby-pipeline/doc/bio-pipeline-environment.md)
+* [Listed features](http://github.com/pjotrp/bioruby-pipeline/features)
 
 ## Installation
 
