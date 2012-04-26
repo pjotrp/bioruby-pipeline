@@ -12,10 +12,17 @@ convention-over-configuration (CoC). For example, bio-pipeline comes
 with a library of templates, mostly based on YAML and ERB, for common
 bioinformatics tasks. 
 
-Also bio-pipeline has the run-once command, which caches results and
-won't calculate the same result twice.
+Another feature of bio-pipeline is the run-once command, which caches
+results and won't calculate the same result twice - allowing
+resilience in the pipeline (when one or more jobs fails, just rerun the
+pipeline). Also the pipeline can be interrupted and start where it
+left off.
 
-You do not need to know Ruby to use bio-pipeline.
+You do not need to know Ruby to use bio-pipeline. But you it may be
+interesting to note that other successful tools for cluster deployment
+use similar ideas. For example [Chef](http://www.opscode.com/chef/)
+uses Ruby, YAML and ERB for configuring machines. It may be an idea to
+combine Chef with bio-pipeline.
 
 Note: this software is under active development! Feel free to pitch in.
 
@@ -43,7 +50,7 @@ this command from the command line with
   ./bin/runner -c muscle.yaml
 ```
 
-The idea is to have richer meta-data possibilities, and rather than
+The idea here is to have richer meta-data possibilities, and rather than
 using commands on the command line we can easily share common tasks,
 add context, paths, and features like creating and copying the *output_dir*. 
 
@@ -96,7 +103,7 @@ Features describe the behaviour of bio-pipeline. More documentation
 can also be found
 
 * [Settings, variables and environment](https://github.com/pjotrp/bioruby-pipeline/blob/master/doc/bio-pipeline-environment.md)
-* [Listed features](https://github.com/pjotrp/bioruby-pipeline/blob/features/)
+* [Listed features](https://github.com/pjotrp/bioruby-pipeline/tree/master/features)
 
 ## Installation
 
