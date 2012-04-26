@@ -31,8 +31,10 @@ A job is described in a YAML task file template. For example
 
 some variables used in the template, such as *in_file* are defined
 inside the template. This should be limited, as these variables are
-not so variable when templates are shared. Here it may be acceptable,
-if we assume the data is always made availble in a file named 'aa.fa'.
+not so variable when templates are shared, and they can not be
+overridden. Here it may be acceptable, if we assume the data is always
+made availble in a file named 'aa.fa' and we refer to the same
+*in_fille* multiple times in the template.
 
 Other variables, such as *muscle_bin* and *output_dir* are set outside
 the template.  *muscle_bin* is a binary search path set by the outside
