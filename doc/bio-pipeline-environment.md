@@ -10,7 +10,12 @@ job-scheduler which puts constraints on a job. For example, the
 environment PATH may not be set, or complete, when running on a
 different machine in a cluster.
 
-## Jobs
+For creating reusable templates, with DRY and CoC in mind, it is
+critical for bio-pipeline to correctly deal with search paths, whether
+they are for searching binaries, source repositories, data and data
+storage.
+
+## Task templates
 
 A job is described in a YAML task file template. For example
 
@@ -25,8 +30,23 @@ A job is described in a YAML task file template. For example
 ```
 
 some variables used in the template, such as *in_file* are defined
-inside the template. Other variables, such as *muscle_bin* and
-*output_dir* are set outside the template.
+inside the template. This should be limited, as these variables are
+not so variable when templates are shared. Here it may be acceptable,
+if we assume the data is always made availble in a file named 'aa.fa'.
+
+Other variables, such as *muscle_bin* and *output_dir* are set outside
+the template.  *muscle_bin* is a binary search path set by the outside
+environment.  *output_dir* is a typical CoC value set by bio-pipeline
+itself. These variables are treated in the following sections.
+
+## bio-pipeline settings (CoC)
+
+(more soon)
+
+## Binary search path
+
+(more soon)
+
 
 
 
