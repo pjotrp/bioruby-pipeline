@@ -95,8 +95,9 @@ represents as few steps as possible. To chain we want
 Features describe the behaviour of bio-pipeline. More documentation
 can also be found
 
-* [Settings, variables and environment](http://github.com/pjotrp/bioruby-pipeline/doc/bio-pipeline-environment.md)
-* [Listed features](http://github.com/pjotrp/bioruby-pipeline/features)
+* [Settings, variables and
+* environment](https://github.com/pjotrp/bioruby-pipeline/blob/master/doc/bio-pipeline-environment.md)
+* [Listed features](https://github.com/pjotrp/bioruby-pipeline/blob/features/)
 
 ## Installation
 
