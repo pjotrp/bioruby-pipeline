@@ -43,9 +43,58 @@ itself. These variables are treated in the following sections.
 
 ## bio-pipeline settings (CoC)
 
+The predefined (default) bio-pileline paths are relative only, apart
+from a few exceptions, such as the binary search path, the temp dir,
+which is taken from the TMPDIR environment, unless overridden in
+PIPELINE_TMP_DIR, or the configuration. Another absolute path is the
+pipe line base dir, which is taken from the PIPELINE_EXPORT_DIR
+environment setting. This can be a shared, exported, network drive.
+
+The bio-pipeline settings are taken from
+bio-pipeline/etc/bio-pipeline-config.yaml by default. You can override
+the global settings configuration by passing a global config file into
+the runner (this is not recommended).
+
+Relative paths are also defined in the global settings configuration.
+
+Most relative paths will be relative to the PIPELINE_EXPORT_DIR, or
+*pipeline_dir*. For
+example the common storage will be in *pipeline_dir*/store/.
+Tasks will be running in *pipeline_dir*/runs/.
+
+Some relative paths are relative to the run directory of a task.
+For example, *output_dir*, which stores the results of a task.
+This *output_dir* is tar balled at the end of a task run and put in
+the *store_dir*.
+
+This may all be a bit overwhelming, and while we stick to CoC, we do
+allow overriding defaults at several levels.
+
 (more soon)
 
 ## Binary search path
+
+Inside a task, a name is first checked whether it exists as a method
+in the Ruby bio-pipeline name space. If so, that is executed as a Ruby
+method(!)
+
+The store can carry its own binaries - which are the first to be used
+- in *store_dir*/opt/packagename/bin/.
+
+If this fails, [Nix packages](http://nixos.org/) are queried in the
+/nix/ directory (Nix is a distribution agnostic packager for Linux and
+OSX).
+
+If this fails, Ruby gems are queried.
+
+If this fails, binaries are searched in /opt/packagename/bin/
+
+Finally the normal search path is used, i.e. /usr/local/bin, /usr/bin,
+/bin.
+
+In other words, the pipeline expects software to exist in the
+*store_dir*. If not, Nix is checked, otherwise the local machine is
+checked.
 
 (more soon)
 
